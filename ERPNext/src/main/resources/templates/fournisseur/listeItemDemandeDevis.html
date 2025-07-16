@@ -1,0 +1,72 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Supplier/</span>
+    List item
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:red"></p>
+
+<div class="card">
+    <h5 class="card-header">List item</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ItemCode</th>
+            <th>Description</th>
+            <th>qty</th>
+            <th>rate</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="item : ${items}">
+            <td th:text="${item.itemCode}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.qty}"></td>
+            <td th:text="${item.rate}"></td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#basicModal" >
+                        Modifier prix
+                    </button>
+                    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel1">Modifier prix ITEM</h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <form id="formAuthentication" class="mb-3" action="#" th:action="@{/fournisseur/modifierPrixItem}" method="post">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label for="nameBasic" class="form-label">New prix</label>
+                                            <input type="text" id="nameBasic" class="form-control" placeholder="00" name="nouveauPrix"/>
+                                            <input type="hidden" name="itemId" th:value="${item.name}">
+                                            <input type="hidden" name="quotationId" th:value="${quotationId}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-dark">Save changes</button>
+                                </div>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!--  <h2>Liste devis</h2>
+<pre th:if="${supplierData}" th:text="${supplierData}"></pre>
+-->

@@ -1,0 +1,15 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Import / Nombre des lignes des fichier</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+<p th:if="${nombreLignes != null}">
+    <strong>Nombre de lignes par fichier :</strong>
+    <ul>
+        <li th:each="entry : ${nombreLignes}">
+            <span th:text="${entry.key}"></span> : 
+            <span th:text="${entry.value}"></span> lignes
+        </li>
+    </ul>
+</p>

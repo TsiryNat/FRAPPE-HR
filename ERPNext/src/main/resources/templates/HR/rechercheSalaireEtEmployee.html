@@ -1,0 +1,124 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Employee et Salaire List/</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="col-md-8">
+                <form class="d-flex" th:action="@{/employeeHR/rechercheSalaireEtEmployeePost}" method="post">
+                    <select id="defaultSelect" name="salaryComponentName" class="form-select me-2">
+                        <option th:each="sc : ${salaryComponent}"
+                                th:value="${sc.name}"
+                                th:text="${sc.name}" >
+                        </option>
+                    </select>
+                    <div class="col-md-1"></div>
+                    <select id="defaultSelect" name="condition" class="form-select me-2">
+                        <option value="egale">egale</option>
+                        <option value="superieur">superieur</option>
+                        <option value="inferieur">inferieur</option>
+                    </select>
+                    <div class="col-md-1"></div>
+                    <input type="text" name="montant" class="form-control" id="basic-default-company" placeholder="0.0" />
+                    <div class="col-md-1"></div>
+                    <button class="btn btn-outline-dark col-md-4" type="submit">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav> 
+
+<div class="card">
+    <h5 class="card-header">Salary slip</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Employee Name</th>
+            <th>Salary Structure</th>
+            <th>Debut</th>
+            <th>Fin</th>
+            <th th:each="champ : ${nomChamp}" th:text="${champ}"></th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="sp : ${salarySlip}">
+            <td th:text="${sp.name}"></td>
+            <td th:text="${sp.employee_name}"></td>
+            <td th:text="${sp.salary_structure}"></td>
+            <td th:text="${sp.start_date}"></td>
+            <td th:text="${sp.end_date}"></td>
+            <th:block th:each="champ : ${nomChamp}">
+              <td>
+                  <span th:text="${sp.earningsAndDeductions[champ.toString()]}"></span>
+              </td>
+            </th:block>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+<!--
+<div class="row">
+    <div class="offset-md-2 col-md-7">
+        <div class="card">
+            <h5 class="offset-md-4 card-header">Modification salaire</h5>
+            <div class="card-body">
+            <form th:action="@{/employeeHR/modificationSalaire}" method="post">
+                <div class="mb-3">
+                    <label class="form-label" for="basic-default-company">Element de salaire</label>
+                    <select id="defaultSelect" name="salaryComponentName" class="form-select me-2">
+                        <option th:each="sc : ${salaryComponent}"
+                                th:value="${sc.name}"
+                                th:text="${sc.name}" >
+                        </option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Superieur/Inferieur</label>
+                            <select id="defaultSelect" name="condition" class="form-select me-2">
+                                <option value="superieur"> Superieur </option>
+                                <option value="egale"> Egale </option>
+                                <option value="inferieur"> Inferieur </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Montant</label>
+                            <input class="form-control" name="montant" type="text" id="formFile" placeholder="0.0"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Nouvelle salaire de base</label>
+                            <input class="form-control" name="nouvelleSalaireBase" type="text" id="formFile" placeholder="0.0" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Pourcentage</label>
+                            <input class="form-control" name="pourcentage" type="text" id="formFile" placeholder="0.0" />
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="offset-md-5 btn btn-dark">Modifier</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+ -->

@@ -1,0 +1,47 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Supplier/</span>
+    List supplier quotation
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:red"></p>
+
+<div class="card">
+    <h5 class="card-header">List supplier quotation</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Transaction date</th>
+            <th>status</th>
+            <th>supplier</th>
+            <th>total</th>
+            <th>currency</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="dmd : ${demandes}">
+            <td th:text="${dmd.name}"></td>
+            <td th:text="${dmd.transaction_date}"></td>
+            <td th:text="${dmd.status}"></td>
+            <td th:text="${dmd.supplier}"></td>
+            <td th:text="${dmd.total}"></td>
+            <td th:text="${dmd.currency}"></td>
+            <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/fournisseur/devisDetails(quotationName=${dmd.name})}"></i>Voir Item</a>
+                  </div>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!--  <h2>Liste devis</h2>
+<pre th:if="${supplierData}" th:text="${supplierData}"></pre>
+-->

@@ -1,0 +1,65 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Supplier/</span>
+    List Purchase Order
+</h4>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+  <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="col-md-4">
+          <form class="d-flex" th:action="@{/fournisseur/allCommandesfilter}" method="post">
+              <select id="defaultSelect" name="status" class="form-select me-2">
+                  <option value="Draft" >Draft</option>
+                  <option value="On Hold" >On Hold</option>
+                  <option value="To Receive and Bill" >To Receive and Bill</option>
+                  <option value="To Bill" >To Bill</option>
+                  <option value="To Receive" >To Receive</option>
+                  <option value="Completed" >Completed</option>
+                  <option value="Cancelled" >Cancelled</option>
+                  <option value="Closed" >Closed</option>
+                  <option value="Delivered" >Delivered</option>
+                </select>
+                <input type="hidden" name="fournisseur" th:value="${fournisseur}">
+              <button class="btn btn-outline-primary" type="submit">Filtrer</button>
+          </form>
+        </div>
+      </div>
+  </div>
+</nav>
+
+<p th:if="${message}" th:text="${message}" style="color:red"></p>
+
+<div class="card">
+    <h5 class="card-header">List supplier quotation</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Supplier</th>
+            <th>status</th>
+            <th>Transaction date</th>
+            <th>% billed</th>
+            <th>% received</th>
+            <th>Grand total</th>
+            <th>name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="bcmmd : ${bonCommande}">
+            <td th:text="${bcmmd.supplier}"></td>
+            <td th:text="${bcmmd.status}"></td>
+            <td th:text="${bcmmd.transaction_date}"></td>
+            <td th:text="${bcmmd.pourc_billed}"></td>
+            <td th:text="${bcmmd.pourc_received}"></td>
+            <td th:text="${bcmmd.grand_total}"></td>
+            <td th:text="${bcmmd.name}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!--  <h2>Liste devis</h2>
+<pre th:if="${supplierData}" th:text="${supplierData}"></pre>
+-->

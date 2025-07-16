@@ -1,0 +1,131 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Salary slip / Modification salaire de base/</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+
+<div class="row">
+    <div class="offset-md-2 col-md-7">
+        <div class="card">
+            <h5 class="offset-md-4 card-header">Modification salaire</h5>
+            <div class="card-body">
+            <form th:action="@{/employeeHR/modificationSalaire}" method="post">
+                <div class="mb-3">
+                    <label class="form-label" for="basic-default-company">Element de salaire</label>
+                    <select id="defaultSelect" name="salaryComponentName" class="form-select me-2">
+                        <option th:each="sc : ${salaryComponent}"
+                                th:value="${sc.name}"
+                                th:text="${sc.name}" >
+                        </option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Superieur/Inferieur</label>
+                            <select id="defaultSelect" name="condition" class="form-select me-2">
+                                <option value="superieur"> Superieur </option>
+                                <option value="egale"> Egale </option>
+                                <option value="inferieur"> Inferieur </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Montant</label>
+                            <input class="form-control" name="montant" type="text" id="formFile" placeholder="0.0"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Nouvelle salaire de base</label>
+                            <input class="form-control" name="nouvelleSalaireBase" type="text" id="formFile" placeholder="0.0" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Pourcentage</label>
+                            <input class="form-control" name="pourcentage" type="text" id="formFile" placeholder="0.0" />
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="offset-md-5 btn btn-dark">Modifier</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="col-md-8">
+                <form class="d-flex" th:action="@{/employeeHR/voirRechercheSalaryEmployePost}" method="post">
+                    <select id="defaultSelect" name="salaryComponent" class="form-select me-2">
+                        <option th:each="sc : ${salaryComponent}"
+                                th:value="${sc.name}"
+                                th:text="${sc.name}" >
+                        </option>
+                    </select>
+                    <div class="col-md-1"></div>
+                    <select id="defaultSelect" name="condition" class="form-select me-2">
+                        <option value="egale">egale</option>
+                        <option value="superieur">superieur</option>
+                        <option value="inferieur">inferieur</option>
+                    </select>
+                    <div class="col-md-1"></div>
+                    <input type="text" name="montant" class="form-control" id="basic-default-company" placeholder="0.0" />
+                    <div class="col-md-1"></div>
+                    <button class="btn btn-outline-dark col-md-4" type="submit">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav> 
+-->
+
+<!--<div class="card">
+    <h5 class="card-header">Employee List</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Salutation</th>
+            <th>Date of birth</th>
+            <th>Date of joining</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="empl : ${employee}">
+            <td th:text="${empl.employee_name}"></td>
+            <td th:text="${empl.gender}"></td>
+            <td th:text="${empl.salutation}"></td>
+            <td th:text="${empl.date_of_birth}"></td>
+            <td th:text="${empl.date_of_joining}"></td>
+            <td th:text="${empl.status}"></td>
+            <td>
+                <button type="button" class="btn btn-dark">
+                    <a class="dropdown-item" 
+                    th:href="@{/employeeHR/ficheEmployeAvecSalaire(employeeID=${empl.name})}">
+                        Voir fiche
+                    </a>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div> -->
+
+<!--  <h2>Liste employee</h2>
+<pre th:if="${employee}" th:text="${employee}"></pre>
+-->

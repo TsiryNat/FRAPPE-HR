@@ -1,0 +1,64 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Salary slip/</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="col-md-4">
+                <form class="d-flex" th:action="@{/employeeHR/listEmployeeWithFilter}" method="post">
+                    <input type="date" name="date" class="form-control" id="basic-default-company" placeholder="Search" />
+                    <div class="col-md-1"></div>
+                    <button class="btn btn-outline-dark col-md-4" type="submit">Filtre</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="card">
+    <h5 class="card-header">Salary slip</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Employee Name</th>
+            <th>Salary Structure</th>
+            <th>Debut</th>
+            <th>Fin</th>
+            <th th:each="champ : ${nomChamp}" th:text="${champ}"></th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="sp : ${salarySlip}">
+            <td th:text="${sp.name}"></td>
+            <td th:text="${sp.employee_name}"></td>
+            <td th:text="${sp.salary_structure}"></td>
+            <td th:text="${sp.start_date}"></td>
+            <td th:text="${sp.end_date}"></td>
+            <th:block th:each="champ : ${nomChamp}">
+              <td>
+                  <span th:text="${sp.earningsAndDeductions[champ.toString()]}"></span>
+              </td>
+            </th:block>
+            <td>
+                <button type="button" class="btn btn-dark">
+                    <a class="dropdown-item" 
+                    th:href="@{/employeeHR/salarySlipDetails(salaryId=${sp.name})}">
+                        Details
+                    </a>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!--  <h2>Liste spoyee</h2>
+<pre th:if="${employee}" th:text="${employee}"></pre>
+-->

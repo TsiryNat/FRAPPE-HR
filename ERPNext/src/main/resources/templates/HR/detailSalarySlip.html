@@ -1,0 +1,103 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Details salary slip /</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:green"></p>
+      
+<div class="col-md-12">
+    <div class="col-xl">
+        <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Employee</label>
+                        <input type="text" th:value="${salarySlipDetail.employee_name}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Posting Date</label>
+                        <input type="text" th:value="${salarySlipDetail.posting_date}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Status</label>
+                        <input type="text" th:value="${salarySlipDetail.status}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Currency</label>
+                        <input type="text" th:value="${salarySlipDetail.currency}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Company</label>
+                        <input type="text" th:value="${salarySlipDetail.company}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr class="m-0" />
+            <br>
+                <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Payroll Frequency</label>
+                        <input type="text" th:value="${salarySlipDetail.payroll_frequency}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Salary Structure</label>
+                        <input type="text" th:value="${salarySlipDetail.salary_structure}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Start Date</label>
+                        <input type="text" th:value="${salarySlipDetail.start_date}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">End Date</label>
+                        <input type="text" th:value="${salarySlipDetail.end_date}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr class="m-0" />
+            <br>
+                <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Net Pay (EUR)</label>
+                        <input type="text" th:value="${salarySlipDetail.net_pay}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Rounded Total (EUR)</label>
+                        <input type="text" th:value="${salarySlipDetail.rounded_total}" class="form-control" id="basic-default-company" readonly/>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr class="m-0" />
+            <br>
+            <button type="" class="btn btn-dark">
+                <a class="dropdown-item" th:href="@{/employeeHR/exportPDF(salaryId=${salarySlipDetail.name})}">Export PDF</a>
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+

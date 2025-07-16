@@ -1,0 +1,73 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Supplier/</span>
+    List supplier
+</h4>
+
+<div class="card">
+    <h5 class="card-header">List supplier</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="fournisseurs : ${fournisseurs}">
+            <td th:text="${fournisseurs.name}"></td>
+            <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/fournisseur/demandesDevis(fournisseur=${fournisseurs.name})}">List Supplier Quotation</a>
+                    <a class="dropdown-item" th:href="@{/fournisseur/allCommandes(fournisseur=${fournisseurs.name})}">List Purchase Order</a>
+                  </div>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+  
+<!-- <div class="offset-3 col-md-6">
+    <div class="col-xl">
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Choisir une fournisseur</h5>
+          <small class="text-muted float-end">Default label</small>
+          <div th:if="${message}">
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <span th:text="${message}"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form th:action="@{/ventes/insertionVente}" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="basic-default-company">Listes des fournisseurs</label>
+                <select id="defaultSelect" name="name" class="form-select me-2">
+                    <option th:each="fourni : ${fournisseurs}"
+                            th:value="${fourni.name}"
+                            th:text="${fourni.name}" >
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="basic-default-company">Option</label>
+                <select id="defaultSelect" name="composant" class="form-select me-2">
+                    <option value=" demandes de devis"> voir liste des demandes de devis</option>
+                    <option value=" demandes de devis"> voir liste des Commande</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Voir</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+-->

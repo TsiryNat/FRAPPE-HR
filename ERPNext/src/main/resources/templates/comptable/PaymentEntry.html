@@ -1,0 +1,121 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Account/</span>
+    List item
+</h4>
+
+<div class="offset-1 col-md-10">
+    <div class="col-xl">
+      <div class="mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h2 class="mb-0"><strong>Payment Entry</strong></h2>
+        </div>
+        <div class="card-body">
+          <form th:action="@{/comptable/payerFacture}" method="post">
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="mb-3">
+                      <label class="form-label" for="basic-default-company">Series</label>
+                      <input type="text" value="ACC-PAY-.YYYY.-" class="form-control" id="basic-default-company" placeholder="" readonly/>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="mb-3">
+                      <label class="form-label" for="basic-default-company">Posting date</label>
+                      <input type="date" name="posting_date" class="form-control" id="basic-default-company" placeholder="" />
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-default-company">Payment Type</label>
+                    <select id="defaultSelect" name="payment_type" class="form-select me-2">
+                        <option value="Pay">Pay</option>
+                      <option value="Receive">Receive</option>
+                      <option value="Internal Transfer">Internal Transfer</option>
+                    </select>
+                 </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-default-company">Mode de Payment</label>
+                    <select id="defaultSelect" name="mode_of_payment" class="form-select me-2">
+                        <option value="Cash">Cash</option>
+                      <option value="Bank Draft">Bank Draft</option>
+                      <option value="Cheque">Cheque</option>
+                      <option value="Credit Card">Credit Card</option>
+                      <option value="Wire Transfer">Wire Transfer</option>
+                  </select>
+                 </div>
+                </div>
+            </div>
+            <br>
+            <hr class="m-0" />
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-company">Partie Type</label>
+                  <input type="text" value="Supplier" name="party_type" class="form-control" id="basic-default-company" placeholder="" readonly/>
+               </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-default-company">Party</label>
+                    <input type="text" th:value="${supplier}" name="party" class="form-control" id="basic-default-company" placeholder="" readonly/>
+                 </div>
+                </div>
+            </div>
+            <br>
+            <hr class="m-0" />
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-company">Account Paid From</label>
+                  <input type="text" value="Bank Account - E" name="paid_from" class="form-control" id="basic-default-company" placeholder="" readonly/>
+               </div>
+                </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-company">Account Paid To</label>
+                  <input type="text" value="2110 - Creditors - E" name="paid_to" class="form-control" id="basic-default-company" placeholder="" readonly/>
+               </div>
+                </div>
+            </div>
+            <br>
+            <hr class="m-0" />
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-company">Paid Amount</label>
+                  <input type="text" th:value="${amount}" name="amount" class="form-control" id="basic-default-company" placeholder="" readonly/>
+                  <!-- HIDDEN INVOICE NAME -->
+                  <input type="hidden" th:value="${invoiceName}" name="invoiceName" class="form-control" id="basic-default-company" placeholder="" /> 
+               </div>
+                </div>
+            </div>
+            <br>
+            <hr class="m-0" />
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-company">Cheque/Reference No</label>
+                  <input type="text" name="reference_no" class="form-control" id="basic-default-company" placeholder="" />
+               </div>
+                </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-company">Cheque/Reference Date</label>
+                  <input type="date" name="reference_date" class="form-control" id="basic-default-company" placeholder="" />
+               </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

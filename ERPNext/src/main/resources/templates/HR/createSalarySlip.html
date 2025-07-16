@@ -1,0 +1,60 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Salary slip / Creation Salary slip</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+<div class="row">
+    <div class="offset-md-2 col-md-7">
+        <div class="card">
+            <h5 class="offset-md-4 card-header">Creation Salary Slip</h5>
+            <div class="card-body">
+            <form th:action="@{/employeeHR/createSalarySlip}" method="post">
+                <div class="mb-3">
+                    <label class="form-label" for="basic-default-company">Employee</label>
+                    <select id="defaultSelect" name="employee_name" class="form-select me-2">
+                        <option th:each="empl : ${employee}"
+                                th:value="${empl.name}"
+                                th:text="${empl.name} + ' / ' + ${empl.employee_name}" >
+                        </option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Date debut</label>
+                            <input class="form-control" name="date_debut" type="date" id="formFile" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Date fin</label>
+                            <input class="form-control" name="date_fin" type="date" id="formFile" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Salaire de base</label>
+                    <input class="form-control" name="salaire" type="text" id="formFile" placeholder="0.0" />
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" name="moyenne" type="checkbox" value="on" id="defaultCheck1" />
+                            <label class="form-check-label" for="defaultCheck1"> Moyenne Salaire employee</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" name="ecrase" type="checkbox" value="on" id="defaultCheck1" />
+                            <label class="form-check-label" for="defaultCheck1"> Ecrase salary slip existant </label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="offset-md-5 btn btn-dark">Valider</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

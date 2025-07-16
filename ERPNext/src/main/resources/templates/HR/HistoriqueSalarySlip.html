@@ -1,0 +1,37 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Historique Salary slip/</span>
+</h4>
+
+<div class="card">
+    <h5 class="card-header">Salary slip</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>Employee Name</th>
+            <th>Salary Structure</th>
+            <th>Debut</th>
+            <th>Fin</th>
+            <th>salaire de base</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="sp : ${historique}">
+            <td th:text="${sp.id}"></td>
+            <td th:text="${sp.name}"></td>
+            <td th:text="${sp.employee_name}"></td>
+            <td th:text="${sp.salary_structure}"></td>
+            <td th:text="${sp.start_date}"></td>
+            <td th:text="${sp.end_date}"></td>
+            <td th:text="${sp.salaire_de_base}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!--  <h2>Liste spoyee</h2>
+<pre th:if="${employee}" th:text="${employee}"></pre>
+-->

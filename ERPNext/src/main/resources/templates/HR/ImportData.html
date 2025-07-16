@@ -1,0 +1,69 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Import Data & Reset Database /</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+<p th:if="${message}" th:utext="${htmlMessage}" style="color:gray"></p>
+
+<div class="row">
+    <div class="offset-md-2 col-md-7">
+        <div class="card">
+            <h5 class="offset-md-5 card-header">Voir nombre Ligne</h5>
+            <div class="card-body">
+            <form th:action="@{/employeeHR/verifierLigneDonnee}" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Fichier 1</label>
+                <input class="form-control" name="fichier1" type="file" id="formFile" required/>
+                </div>
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Fichier 2</label>
+                <input class="form-control" name="fichier2" type="file" id="formFile" required/>
+                </div>
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Ficher 3</label>
+                <input class="form-control" name="fichier3" type="file" id="formFile" required/>
+                </div>
+                <button type="submit" class="offset-md-5 btn btn-dark">Valider</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="offset-md-2 col-md-7">
+        <div class="card">
+            <h5 class="offset-md-5 card-header">Import Data</h5>
+            <div class="card-body">
+            <form th:action="@{/employeeHR/importData}" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Fichier 1</label>
+                <input class="form-control" name="fichier1" type="file" id="formFile" required/>
+                </div>
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Fichier 2</label>
+                <input class="form-control" name="fichier2" type="file" id="formFile" required/>
+                </div>
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Ficher 3</label>
+                <input class="form-control" name="fichier3" type="file" id="formFile" required/>
+                </div>
+                <button type="submit" class="offset-md-5 btn btn-dark">Valider</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="offset-md-2 col-md-7">
+        <div class="card">
+            <h5 class="offset-md-5 card-header">Reset Database</h5>
+            <div class="card-body">
+                <button type="" class="offset-md-5 btn btn-dark">
+                    <a class="dropdown-item" th:href="@{/employeeHR/resetDatabase}">Ok</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

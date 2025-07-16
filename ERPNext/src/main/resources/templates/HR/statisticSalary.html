@@ -1,0 +1,59 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Statistic salary/</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="col-md-4">
+                <form class="d-flex" th:action="@{/employeeHR/getStatistiqueByYearPost}" method="post">
+                   <select id="defaultSelect" name="year" class="form-select me-2">
+                        <option value="2024">Annee</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                    <div class="col-md-1"></div>
+                    <button class="btn btn-outline-dark col-md-4" type="submit">Filtrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="card">
+    <h5 class="card-header" th:text="${'Statistique en Total en ' + annee}"></h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Mois</th>
+            <th>Base</th>
+            <th th:each="champ : ${nomChamp}" th:text="${champ}"></th>
+            <th>Voir details par employe</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+            <tr th:each="ss : ${statistiqueSalary}">
+                <td th:text="${ss.mois}"></td>
+                <td th:text="${ss.totalBase}"></td>
+                <th:block th:each="champ : ${nomChamp}">
+                    <td>
+                        <span th:text="${ss.totalEarningAndDeduction[champ.toString()] ?: 0.0}"></span>
+                    </td>
+                </th:block>
+                <td>
+                    <button type="button" class="btn btn-dark">
+                        <a class="dropdown-item" 
+                        th:href="@{/employeeHR/employeAndSalaryComponentFilterByDate2(date=${ss.date})}">
+                            Voir
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

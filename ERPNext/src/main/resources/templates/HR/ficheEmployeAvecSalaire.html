@@ -1,0 +1,87 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Fiche employe avec ses salaires par mois/</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+ <div class="col-md-12">
+    <div class="card mb-5">
+    <h5 class="offset-md-5 card-header">Fiche Employee</h5>
+    <div class="card-body">
+        <div class="row">
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">First Name</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.first_name}" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Middle Name</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.middle_name}" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Last Name</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.last_name}" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Gender</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.gender}" readonly />
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Date of Birth</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.date_of_birth}" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Date of joining</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.date_of_joining}" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Status</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.status}" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mb-3">
+            <label for="exampleFormControlReadOnlyInput1" class="form-label">Salutation</label>
+            <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" th:value="${employe.salutation}" readonly />
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="card">
+    <h5 class="offset-md-5 card-header">Salaire par mois</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>From Date</th>
+            <th>Base</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="ass : ${assignments}">
+            <td th:text="${ass.employee_name}"></td>
+            <td th:text="${ass.from_date}"></td>
+            <td th:text="${ass.base}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

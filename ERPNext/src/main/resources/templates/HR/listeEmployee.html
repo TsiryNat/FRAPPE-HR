@@ -1,0 +1,60 @@
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Employee List/</span>
+</h4>
+
+<p th:if="${message}" th:text="${message}" style="color:gray"></p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="col-md-4">
+                <form class="d-flex" th:action="@{/employeeHR/listEmployeeWithFilter}" method="post">
+                    <input type="text" name="recherche" class="form-control" id="basic-default-company" placeholder="Search" />
+                    <div class="col-md-1"></div>
+                    <button class="btn btn-outline-dark col-md-4" type="submit">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="card">
+    <h5 class="card-header">Employee List</h5>
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Salutation</th>
+            <th>Date of birth</th>
+            <th>Date of joining</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          <tr th:each="empl : ${employee}">
+            <td th:text="${empl.employee_name}"></td>
+            <td th:text="${empl.gender}"></td>
+            <td th:text="${empl.salutation}"></td>
+            <td th:text="${empl.date_of_birth}"></td>
+            <td th:text="${empl.date_of_joining}"></td>
+            <td th:text="${empl.status}"></td>
+            <td>
+                <button type="button" class="btn btn-dark">
+                    <a class="dropdown-item" 
+                    th:href="@{/employeeHR/ficheEmployeAvecSalaire(employeeID=${empl.name})}">
+                        Voir fiche
+                    </a>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<!--  <h2>Liste employee</h2>
+<pre th:if="${employee}" th:text="${employee}"></pre>
+-->
